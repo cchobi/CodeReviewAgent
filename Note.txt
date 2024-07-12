@@ -1,0 +1,285 @@
+저자마인드
+보이스카웃룰
+
+이름 변경 단축어
+Ctrl + RR
+함수추출 단축어
+Ctrl + .
+
+코딩컨벤션 우선순위
+====
+- 팀장에서 정산 코딩컨벤션
+- 회사
+- 인증컨벤션
+- Google C++ / Core C++
+
+함수배치순서는
+두괄식으로
+
+데이터중심 객체 => struct
+action 중요한 개게 => class
+
+클린코드: 특정부분 어떤게 더 디테일 읽기 좋은가?
+리펙토링: 기존 코드를 조금 더 클린코드로 만드는것.
+
+regression test 회귀테스트
+
+coding convention
+AUTOSAR, MISRA, GOOGLE
+
+
+1. 클린코드
+2. 프로파일러(성능측정도구)
+각 클래스별
+각 메서드별 -- Latency
+
+성능최적화작업 따로
+
+포매팅
+자동 포매팅 사용 권장
+
+Unit Test
+모듈: 어떤 기능을 하는 덩어리
+모듈이 모여서 하나의 시스템
+
+개발팀: unit test
+검증팀: Black Box Test
+
+
+FIRST 
+Fast
+Indenpendent
+Repeatable
+Self-Validating
+Timely
+
+** OOP
+
+API(int a, int b)
++++ 가드 절 추가해야 한다.++++
+// invalid check
+  a, b 허용되는 범위로 호출되었는지 검사
+// precondition check code
+  어떤 state되는지
++++++++++++++++++
+
+상속 => 중복제거
+
+
+// 1. Dependency Injection --> 마틴파울러
+gogo(new SmartPhone());
+
+// 2. Factory -> 의존성을 한 곳에 모아둔다.
+Phone* phone = makePhone("brick");
+
+// 1 + 2 -> main함수는 의존성이 없어진다.
+gogo(makePhone("brick"));
+
+
+
+* Dependency Injection (의존성 주입)의 장점:
+테스트 용이성: 의존성을 주입하므로, 단위 테스트나 통합 테스트 시 모의 객체(mock object)를 사용하여 의존성을 대체할 수 있습니다. 이는 테스트를 쉽게 작성하고 실행할 수 있게 해줍니다.
+
+결합도 감소: 클라이언트 코드가 구체적인 의존 객체에 대한 참조를 갖지 않고, 인터페이스를 통해 의존성을 주입받음으로써 결합도가 낮아집니다. 이는 코드의 유연성과 재사용성을 높이며, 객체 간의 종속성을 줄입니다.
+
+유지보수성 향상: 의존성을 외부에서 주입받기 때문에, 객체 생성 및 관리에 대한 책임이 외부에 있습니다. 이로 인해 수정이나 확장이 쉬워지며, 코드의 변경 사항이 다른 부분에 미치는 영향을 최소화할 수 있습니다.
+
+
+* Factory 장점
+객체 생성의 캡슐화: 객체 생성 로직을 팩토리 클래스에 캡슐화함으로써, 클라이언트 코드가 객체의 구체적인 클래스에 대해 알 필요가 없습니다. 이는 코드의 중복을 줄이고, 객체 생성 방식을 일관성 있게 관리할 수 있습니다.
+
+유연성과 확장성: 팩토리 패턴을 사용하면 클라이언트 코드는 생성할 객체의 인터페이스만 알면 되므로, 새로운 객체 유형을 추가하거나 기존 객체를 변경할 때 유연하게 대응할 수 있습니다.
+
+결합도 감소: 클라이언트 코드가 팩토리를 통해 객체에 접근하므로, 객체 생성 방식에 대한 변경이 클라이언트 코드에 직접적인 영향을 미치지 않습니다. 이는 시스템의 결합도를 낮추고 유지보수성을 높입니다.
+
+
+
+SUT (System Under Test) : unit테스트할 대상 코드가
+
+Test Fixture의 매커니즘은 상속!!
+
+https://refactoring.com/catalog
+refactoring.guru
+
+=======================
+
+* 인터페이스
+클라이언트입장에서는 리모컨
+서버코드입장에서는 표준
+
+* DIP와 OCP의 차이점
+DIP는 인터페이스를 두어서 강한 의존성을 낮추는 것이고
+OCP는 인터페이스를 두어서 확장성을 강화하는 것이다.
+
+vector에서는 bool타입 쓰면 속도 느려진다.
+vector에서는 bool타입 쓰면 속도 느려진다.
+
+--sources C:*.c --export_type=html:coverage -- .\x64\Debug\Sample-Test1.exe
+
+리펙토링을 시작하는 타이밍으로 옳지 않은것 -> 1
+메서드내에 코드의 역할을 분리하여 외부 메서드로 추출해 낸다. 이때 가능한 추상레벨을 맞춰야 한다.
+분리되는 코드에 공통 부분이 있을 경우 class로 추상화하여 객체로 만든다.
+가드절
+
+Git
+push
+pull
+repository
+Remote repo.
+
+
+
+
+CLI (Git Bash) 
+	사용 추천
+GUI (SourceTree)
+	그래프 볼때, 비교할때
+
+1) working dir 만든다.
+2) 마우스 오른쪽 버튼 -> git bash 실행
+3) git init <= 초기화 .git 파일 생성된다.
+4) git add . {모든 파일을 대기장소에 다 추가한다} <= staging 한다.
+5) git commit -m '메세지' {대기장소에 있을 것들을 금고에 저장한다} <= 커밋한다.
+
+	=> 2)와 3)를 동시에 git commit -am '메세지'  <= 두번째부터 사용가능
+	
+5) git log
+6) git status
+7) git log --online <- git 로그 정보
+
+
+[용어암기]
+untracked file: 관리아직 안하고 있는 파일
+ 
+
+=============
+.git 설정정보
+
+git checkout 은 살펴보기 용도로만 사용가능
+
+git commit -am '111'
+git commit -am '222'
+git commit -am '333'
+git checkout master <= 최근으로 돌아오기
+
+==============
+git branch <- 브랜치 정보 보여줌
+git branch sheep <- 브랜치 생성 
+git checkout sheep <- 브랜치 이동
+git add . <- stage
+git commit -m 'sheep chage' <- commit
+git checkout master <- master브랜치로 이동
+git merge sheep <- sheep 브랜치를 master 브랜치에 merge
+git branch -d sheep <- 브랜치 삭제. 머지후에는 브랜치 삭제한다.
+
+
+** 리모트 작업
+=============
+1. github.com에서 repoistory만든다. 이름 'abc0314'
+
+2. 로컬 설정
+  - working dir 만든다.
+  - 마우스 오른쪽 버튼 -> git bash 실행
+  - git init <= 초기화 .git 파일 생성된다.
+  - git add .
+  - git commit -m 'first'
+  - 로컬 master브랜치 생성된다
+
+3. 만든 repository를 로컬에 등록해 준다.
+git remote add origin https://github.com/cchobi/abc0314/abc0314.git (github repository 위치)
+git remote
+git remote -v 
+
+4. master 브랜치를 해당 repository에 push한다
+git push master
+
+5. 로컬에서 브랜치를 만들고, 파일 만들고/수정하고, add하고, commit하고 나서, 원격으로 push한다.
+git branch jeonggyun2 (내가 만들 브랜치 이름)
+<파일 수정>
+git add .
+git commit -m 'message'
+git push -u origin jeonggyun2(내가 만든 브랜치이름, 안만들었으면 master)
+
+6. 이후부터는 파일 수정후, 
+git commit -am 'message'
+git push 
+만 수행하면된다.
+
+
+[Git hub에서 코드 땡겨오기]
+0. git hub에서 repository를 만들고
+
+1. 원하는 로컬 폴더에 가서 
+git clone <= 한방에 처리. 로컬 폴더에 원격데이터를 모두 한방에 가져온다.
+해당 폴더에서 바로 작업하면된다.
+
+git clone https://github.com/cchobi/abc0314
+
+2. 그 다음부터는 git pull만 수행하면 된다.
+
+git pull
+
+
+=======================
+TDD
+=======================
+
+Unit test가 쉬운 모듈
+- 의존성이 복잡하지 않음
+- 응집도가 높음
+
+API(int a, int b)
+{
+	유효성검사()
+	사전조건테스트()
+
+	핵심로직()
+}
+
+API()
+{
+ a 음수면 invalid throw
+ b 음수면 invalid throw
+ 사전검사코드 다 완성
+ 
+ 핵심로직
+ 
+ 
+qhcjfdudn (한글로 보철여우)
+ytw0201@gmail.com
+jun6ak
+hy-ra-na
+hjoo820@naver.com
+
+
+TDD의 장점
+1. 쉬운 버그를 초기에 잡을 수 있다.
+2. 팀 전체 버그율 감소
+3. TDD를 통해 code coverage를 80%이상 달성할 수 있다.
+4. 테스트케이스를 확보하기 때문에 refactoring 및 추가기능 개발시 회귀테스트가 가능하다.
+5. 코드를 수정하는데 자신감과 안정감을 가질 수 있다.
+6. Refactoring 단계를 통해 높은 응집도과 느슨한 결합도를 갖는 모듈들로 구성된 설계를 얻을 수 있음.
+
+RED : fail되는 테스트를 작성
+GREEN : 동작하는 코드를 작성
+REFACTOR : 리펙토링을 통해 clean code 작성.
+
+
+https://app.diagrams.net/#G18UKVZ430j5a1MLu0gvZ3GbYXxuIMsd1s#%7B"pageId"%3A"gdSBlc2N4Y7Wg6Z7Ap9_"%7D
+
+
+command validity check, NANDDriver, NAND interface, NAND 개발
+
+TDD를 이용한 개발 방법을 학습하고, 배운 내용을 팀원들과 실습을 통해서 적용해 본 유익한 시간이었습니다.
+3주가 어떻게 지나갔는지 모를 정도로 즐겁게 배웠습니다.
+현업부서에 돌아가서 부서원들에게도 적극 추천하고 싶습니다.  
+
+
+SSD 구현 기능들
+- read, write, erase
+- Command Buffer
+  >> Flush
+  >> Ignore Write 알고리즘 1 & 2
+  >> Merge Erase 알고리즘
+  >> Narrow Range of Erase 알고리즘
+  >> Fast Read  
